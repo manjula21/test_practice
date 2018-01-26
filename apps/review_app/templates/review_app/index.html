@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>All Users</title>
+    <meta name="description" content="Messaging">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'review_app/style.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div class="container">
+        <div class="rightpane">
+            <h3>Sign In</h3>
+            <form action="/login" method="post">
+                {% csrf_token %} 
+                <label for="email">Email:</label>
+                <input type="text" class="entry" id="email" name="email"></br></br>
+                <label for="password">Password:</label>
+                <input type="password" class="entry" id="password" name="password"></br></br>
+                <input type="submit" class="button" value="Submit">
+            </form>
+        </div>
+        <div class="leftpane">
+        	<h2>Welcome</h2>
+            <h3>Registration</h3>
+            <form action="/user_create" method="post">
+                {% csrf_token %} 
+                <label for="name">Name:</label>
+                <input type="text" class="entry" id="name" name="name" value="{{request.session.name}}"></br></br>
+                <label for="alias">Alias:</label>
+                <input type="text" class="entry" id="alias" name="alias"></br></br>
+                <label for="email">Email:</label>
+                <input type="text" class="entry" id="email" name="email"></br></br>
+                <label for="password">Password:</label>
+                <input type="password" class="entry" id="password" name="password"></br></br>
+                <label for="pw_confirm">PW Confirm:</label>
+                <input type="password" class="entry" id="pw_confirm" name="pw_confirm"></br></br>
+                <input type="submit" class="button" value="Submit">
+            </form>
+        </div>
+    </div>
+    
+        {% for error in request.session.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<head>
+	<meta charset="UTF-8">
+	<title>User</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'user_app/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div class="twoperpage">
+        <h3>Hello {{ request.session.name }}</h3>
+        <!-- <form action="/login" method="post">
+            {% csrf_token %} 
+            <label for="email">Email:</label>
+            <input type="text" class="entry" id="email" name="email">
+            <label for="password">Password:</label>
+            <input type="password" class="entry" id="password" name="password">
+            <input type="submit" class="button" value="Submit">
+        </form> -->
+    </div>
+    <div class="twoperpage">
+        <h3>Registration</h3>
+        <!-- <form action="/create" method="post">
+            {% csrf_token %} 
+            <label for="name">Name:</label>
+            <input type="text" class="entry" id="name" name="name">
+            <label for="alias">Alias:</label>
+            <input type="text" class="entry" id="alias" name="alias">
+            <label for="email">Email:</label>
+            <input type="text" class="entry" id="email" name="email">
+            <label for="password">Password:</label>
+            <input type="password" class="entry" id="password" name="password">
+            <label for="pw_confirm">PW Confirm:</label>
+            <input type="password" class="entry" id="pw_confirm" name="pw_confirm">
+            <input type="submit" class="button" value="Submit">
+        </form> -->
+    </div>
+    
+    {% for error in request.session.errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+
+</body>
+</html>
